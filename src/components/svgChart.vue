@@ -1,7 +1,7 @@
 <template>
   <svg :style="{ background: background}" xmlns="http://www.w3.org/2000/svg" :view-box.camel="viewbox" :width="width" :height="height">
     <g>
-    <svg-chart-line :d="line" :stroke="stroke" v-for="(line, index) in lines" :key="index"></svg-chart-line>
+    <svg-chart-line :d="line" :stroke="stroke" v-for="(line, index) in lines" :key="index" :filterWhite="filterWhite"></svg-chart-line>
     </g>
   </svg>
 </template>
@@ -13,7 +13,7 @@
     components: {
       svgChartLine
     },
-    props: ["lines", "black","width","height"],
+    props: ["lines", "black","width","height", "filterWhite"],
     computed: {
       viewbox() {
         return `0 0 ${this.width} ${this.height}`;

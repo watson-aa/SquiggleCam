@@ -186,6 +186,14 @@
                   <input type="range" min="0.5" max="3" step="0.2" v-model="settings.spacing">
                   <div class="output">{{ settings.spacing }}</div>
                 </div>
+
+                <div class="paper-chooser">
+                  <div class="button-group stretch">
+                    <label>Filter White:</label>
+                    <button v-bind:class="{ active: settings.filterWhite === true }" class="btn" @click="settings.filterWhite = true">Yes</button>
+                    <button class="btn" v-bind:class="{ active: settings.filterWhite === false }" @click="settings.filterWhite = false">No</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -210,7 +218,7 @@
         </aside>
         <main>
           <div v-if="canvasData" class="svg-container" ref="container">
-            <svg-chart ref="svgResult" :black="settings.black" :lines="lines" :width="settings.width" :height="settings.height"></svg-chart>
+            <svg-chart ref="svgResult" :black="settings.black" :lines="lines" :width="settings.width" :height="settings.height" :filterWhite="settings.filterWhite"></svg-chart>
           </div>
         </main>
       </div>
@@ -245,6 +253,7 @@
           contrast: 0,
           minBrightness: 0,
           maxBrightness: 255,
+          filterWhite: false,
           spacing: 1,
           width: 500,
           height: 500
@@ -362,6 +371,7 @@
           const maxBrightness = parseInt(config.maxBrightness);
           const spacing = parseFloat(config.spacing);
           const black = config.black;
+          const filterWhite = config.filterWhite;
 
 // Create some defaults for squiggle-point array
           let squiggleData = [];
@@ -380,7 +390,9 @@
           for (let y = 0; y < height; y+= horizontalLineSpacing) {
             a = 0;
             currentLine = [];
-            currentLine.push([0, y]); // Start the line
+            if (filterWhite == false) {
+              currentLine.push([0, y]); // Start the line
+            }
 
             currentVerticalPixelIndex = y*width;  // Because Image Pixel array is of length width * height,
                                                   // starting pixel for each line will be this
@@ -413,7 +425,10 @@
               r = config.amplitude * z / lineCount;
 
               a += z / config.frequency;
-              currentLine.push([x,y + Math.sin(a)*r]);
+
+              if (filterWhite == false || r > config.amplitude/2) {
+                currentLine.push([x,y + Math.sin(a)*r]);
+              }
             }
             //currentLine.push([config.width, y]);
             squiggleData.push(currentLine);
