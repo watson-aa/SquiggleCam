@@ -8,7 +8,7 @@ The online version of this project takes a picture from your webcam and turns it
 
 Original image:
 
-![Original image](https://raw.githubusercontent.com/watson-aa/SquiggleCam/master/examples/original.png "Original image")
+![Original image](https://raw.githubusercontent.com/watson-aa/SquiggleCam/master/examples/original.jpg "Original image")
 
 ![Full squiggle image](https://raw.githubusercontent.com/watson-aa/SquiggleCam/master/examples/full_squiggle.png "Full squiggle image")
 
