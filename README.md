@@ -2,15 +2,17 @@
 
 Web Based implementation of [SquiggleDraw algorithm](https://github.com/gwygonik/SquiggleDraw ), originally implemented by Gregg Wygonik.
 
+Forked from [SquiggleCam](https://github.com/msurguy/SquiggleCam), by [Maksim Surguy](https://github.com/msurguy)
+
 The online version of this project takes a picture from your webcam and turns it into plotter-drawable, laser-engravable SVG file.
 
-Here's an example of output image generated with this tool:
+Original image:
 
-![Image of SquiggleCam in use](https://raw.githubusercontent.com/msurguy/SquiggleCam/master/examples/description.jpg "Image of SquiggleCam output")
+![Original image](https://raw.githubusercontent.com/watson-aa/SquiggleCam/master/examples/original.png "Original image")
 
-And here's a video my plotter that uses this tool:
+![Full squiggle image](https://raw.githubusercontent.com/watson-aa/SquiggleCam/master/examples/full_squiggle.png "Full squiggle image")
 
-[![Video of SquiggleCam in use](https://raw.githubusercontent.com/msurguy/SquiggleCam/master/examples/botomazov.jpg)](https://www.youtube.com/watch?v=abBnMcs58ds)
+![White filter image](https://raw.githubusercontent.com/watson-aa/SquiggleCam/master/examples/filter_white.png "White filter image")
 
 # Installation and running
 
@@ -22,6 +24,11 @@ npm install
 Then, run this command to watch for changes and to launch the HTML page in the browser:
 ```
 npm run dev
+```
+
+Alternatively, run docker-compose:
+```
+docker-compose up
 ```
 
 # Algorithm
