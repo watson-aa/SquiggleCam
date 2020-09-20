@@ -1,0 +1,15 @@
+version: "3.5"
+
+services:
+    squigglecam:
+        build:
+            context: ./
+            dockerfile: squigglecam.dockerfile
+        ports:
+            - "8888:8888"
+        environment:
+            - "HOST=0.0.0.0"
+            - "PORT=8888"
+        command: ["npm", "start", "dev"]
+        volumes:
+            - ./:/app:delegated
